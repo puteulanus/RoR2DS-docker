@@ -5,7 +5,7 @@ services:
 
 before_install:
   - docker build -t puteulanus/ror2ds .
-  - UPDATE_TIME=(docker run -it puteulanus/ror2ds cat /root/RoR2DS/steamapps/appmanifest_1180760.acf | grep 'LastUpdated' | awk -F '"' '{print $(NF-1)}')
+  - UPDATE_TIME=$(docker run -it puteulanus/ror2ds cat /root/RoR2DS/steamapps/appmanifest_1180760.acf | grep 'LastUpdated' | awk -F '"' '{print $(NF-1)}')
   - VER=$(date -d @$UPDATE_TIME +'%Y-%m-%d')
   - docker tag puteulanus/ror2ds puteulanus/ror2ds:$VER
 
