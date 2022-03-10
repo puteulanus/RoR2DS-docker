@@ -11,8 +11,7 @@ FROM ubuntu:18.04
 COPY --from=steam /home/steam/RoR2DS /root/RoR2DS
 RUN ln -s /root/RoR2DS/Risk\ of\ Rain\ 2_Data/Config /Config
 
-RUN apt-get update
-RUN apt-get -y install xvfb wine-stable lib32gcc1
+RUN apt-get update && apt-get install -y --no-install-recommends xvfb wine-stable lib32gcc1
 
 WORKDIR /root/RoR2DS
 EXPOSE 27015/udp
